@@ -3,14 +3,13 @@ CREATE SCHEMA IF NOT EXISTS `dormhub` DEFAULT CHARACTER SET utf8 ;
 USE dormhub;
 DROP TABLE IF EXISTS `blog`;
 DROP TABLE IF EXISTS `region`;
+DROP TABLE IF EXISTS `paymentMethod`;
 DROP TABLE IF EXISTS `source`;
 DROP TABLE IF EXISTS `roomService`;
 DROP TABLE IF EXISTS `user`;
 DROP TABLE IF EXISTS `agreement`;
 DROP TABLE IF EXISTS `room`;
 DROP TABLE IF EXISTS `service`;
-DROP TABLE IF EXISTS `paymentMethod`;
-DROP TABLE IF EXISTS `banking`;
 DROP TABLE IF EXISTS `dorm`;
 DROP TABLE IF EXISTS `address`;
 
@@ -32,23 +31,6 @@ CREATE TABLE `dorm` (
     addressId		CHAR(8)				NOT NULL,
     CONSTRAINT dormId_pk PRIMARY KEY ( dormId ),
     CONSTRAINT addressId_fk FOREIGN KEY ( addressId ) REFERENCES `address` ( addressId )
-);
-
-CREATE TABLE `banking` (
-	bankId			CHAR(5)				NOT NULL,
-	name			VARCHAR(50)			NOT NULL,
-    logo			VARCHAR(100)		NOT NULL,
-    CONSTRAINT bankId_pk PRIMARY KEY ( bankId )
-);
-
-CREATE TABLE `paymentMethod` (
-	methodId		VARCHAR(50)			NOT NULL,
-    qrcode			VARCHAR(100),
-    dormId			CHAR(5)				NOT NULL,
-    bankId			CHAR(5)				NOT NULL,
-    CONSTRAiNT methodId_pk PRIMARY KEY ( methodId ),
-    CONSTRAINT dormId_paymnet_fk FOREIGN KEY ( dormId ) REFERENCES `dorm` ( dormId ),
-    CONSTRAINT bankId_fk FOREIGN KEY ( bankId ) REFERENCES `banking` ( bankId )
 );
 
 CREATE TABLE `agreement` (
@@ -120,11 +102,22 @@ CREATE TABLE `roomService` (
 CREATE TABLE `source` (
 	sourceId		CHAR(5)				NOT NULL,
 	path			VARCHAR(100)		NOT NULL,
+    name			VARCHAR(50),
     dormId			CHAR(5)				NOT NULL,
     roomId			CHAR(5)				NOT NULL,
     CONSTRAINT sourceId_pk PRIMARY KEY ( sourceId ),
     CONSTRAINT dormId_source_fk FOREIGN KEY ( dormId ) REFERENCES `dorm` ( dormId ),
     CONSTRAINT roomId_source_fk FOREIGN KEY ( roomId ) REFERENCES `room` ( roomId )
+);
+
+CREATE TABLE `paymentMethod` (
+	methodId		VARCHAR(50)			NOT NULL,
+    qrcode			VARCHAR(100),
+    dormId			CHAR(5)				NOT NULL,
+    sourceId		CHAR(5)				NOT NULL,
+    CONSTRAiNT methodId_pk PRIMARY KEY ( methodId ),
+    CONSTRAINT dormId_paymnet_fk FOREIGN KEY ( dormId ) REFERENCES `dorm` ( dormId ),
+    CONSTRAINT sourceId_payment_fk FOREIGN KEY ( sourceId ) REFERENCES `source` ( sourceId )
 );
 
 CREATE TABLE `region` (
