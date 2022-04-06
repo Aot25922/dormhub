@@ -1,3 +1,5 @@
+USE int365_dormhub;
+
 INSERT INTO `address`(addressId, number, street, alley) VALUES ('AD00001', '192/168', 'St.Road', null);
 
 INSERT INTO `region`(regionId, region, city, state, district, country, zipCode, addressId, sourceId) VALUES ('RG001', 'North', 'Bangkok', 'state', 'distrint', 'Thailand', '10150', 'AD00001', null);
