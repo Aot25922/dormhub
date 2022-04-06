@@ -75,6 +75,7 @@ CREATE TABLE `blog` (
 CREATE TABLE `service` (
 	serviceId		CHAR(5)				NOT NULL,
     name			VARCHAR(50)			NOT NULL,
+    price			INT,
     description		VARCHAR(200)		NOT NULL,
     CONSTRAINT serviceId_pk PRIMARY KEY ( serviceId )
 );
@@ -83,8 +84,8 @@ CREATE TABLE `room` (
 	roomId			CHAR(5)				NOT NULL,
     roomNum			VARCHAR(50)			NOT NULL,
     status			VARCHAR(120)		NOT NULL,
-    floors			INT(2)				NOT NULL,
-    price			INT(5)				NOT NULL,
+    floors			INT					NOT NULL,
+    price			INT					NOT NULL,
     description		VARCHAR(200),
     dormId			CHAR(5)				NOT NULL,
     CONSTRAINT roomId_pk PRIMARY KEY ( roomId ),
