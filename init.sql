@@ -1,12 +1,13 @@
-DROP SCHEMA IF EXISTS `dormhub` ;
-CREATE SCHEMA IF NOT EXISTS `dormhub` DEFAULT CHARACTER SET utf8 ;
-USE dormhub;
+DROP SCHEMA IF EXISTS `int365_dormhub` ;
+CREATE SCHEMA IF NOT EXISTS `int365_dormhub` DEFAULT CHARACTER SET utf8 ;
+USE int365_dormhub;
 DROP TABLE IF EXISTS `paymentMethod`;
 DROP TABLE IF EXISTS `blog`;
 DROP TABLE IF EXISTS `user`;
 DROP TABLE IF EXISTS `agreement`;
 DROP TABLE IF EXISTS `address`;
-DROP TABLE IF EXISTS `region`;
+DROP TABLE IF EXISTS `addrDetail`;
+DROP TABLE IF EXISTS `location`;
 DROP TABLE IF EXISTS `source`;
 DROP TABLE IF EXISTS `roomService`;
 DROP TABLE IF EXISTS `service`;
@@ -73,17 +74,23 @@ CREATE TABLE `source` (
     CONSTRAINT roomTypeId_source_fk FOREIGN KEY ( roomTypeId ) REFERENCES `roomType` ( roomTypeId )
 );
 
-CREATE TABLE `region` (
-	regionId		CHAR(5)				NOT NULL,
+CREATE TABLE `location` (
+	locationId		CHAR(5)				NOT NULL,
+    city			VARCHAR(50)			NOT NULL,
     region			VARCHAR(50)			NOT NULL,
-    city			VARCHAR(30)			NOT NULL,
+    country			VARCHAR(30)			NOT NULL,
+    sourceId		CHAR(5),
+    CONSTRAINT locationId_pk PRIMARY KEY ( locationId ),
+    CONSTRAINT sourceId_loc_fk FOREIGN KEY ( sourceId ) REFERENCES `source` ( sourceId )
+);
+
+CREATE TABLE `addrDetail` (
+    zipCode			CHAR(5)				NOT NULL,
     state			VARCHAR(30)			NOT NULL,
     district		VARCHAR(30)			NOT NULL,
-    country			VARCHAR(30)			NOT NULL,
-    zipCode			CHAR(5)				NOT NULL,
-    sourceId		CHAR(5),
-    CONSTRAINT regionId_pk PRIMARY KEY ( regionId ),
-    CONSTRAINT sourceId_fk FOREIGN KEY ( sourceId ) REFERENCES `source` ( sourceId )
+    locationId		CHAR(5)				NOT NULL,
+    CONSTRAINT zipCode_pk PRIMARY KEY ( zipCode ),
+    CONSTRAINT locationId_fk FOREIGN KEY ( locationId ) REFERENCES `location` ( locationId )
 );
 
 CREATE TABLE `address` (
@@ -91,10 +98,10 @@ CREATE TABLE `address` (
     number			VARCHAR(20)			NOT NULL,
     street			VARCHAR(30)			NOT NULL,
     alley			VARCHAR(5),
-    regionId		CHAR(5)				NOT NULL,
+    zipCode			CHAR(5)				NOT NULL,
     dormId			CHAR(5),
     CONSTRAINT addressDorm_pk PRIMARY KEY ( addressId, dormId ),
-    CONSTRAINT regionId_fk FOREIGN KEY ( regionId ) REFERENCES `region` ( regionId ),
+    CONSTRAINT zipCode_fk FOREIGN KEY ( zipCode ) REFERENCES `addrDetail` ( zipCode ),
     CONSTRAINT dormId_address_fk FOREIGN KEY ( dormId ) REFERENCES `dorm` ( dormId )
 );
 

@@ -19,11 +19,14 @@ INSERT INTO `source`(sourceId, path, name, dormId, roomTypeId) VALUES ('S0008', 
 INSERT INTO `source`(sourceId, path, name, dormId, roomTypeId) VALUES ('S0009', 'https://cdnmetv.metv.com/AGKJm-1619719750-16227-list_items-bugs_gun.jpg', null, 'D0002', 'RT001');
 INSERT INTO `source`(sourceId, path, name, dormId, roomTypeId) VALUES ('S0010', 'https://cdnmetv.metv.com/Vpf7q-1619719679-16225-list_items-bugs-commy.jpg', null, 'D0002', 'RT001');
 
-INSERT INTO `region`(regionId, region, city, state, district, country, zipCode, sourceId) VALUES ('RG001', 'Center', 'Bangkok', 'state1', 'distrint1', 'Thailand', '10150', null);
-INSERT INTO `region`(regionId, region, city, state, district, country, zipCode, sourceId) VALUES ('RG002', 'North', 'Changmai', 'state2', 'distrint2', 'Thailand', '10456', null);
+INSERT INTO `location`(locationId, city, region, country, sourceId) VALUES ('LC001', 'Bangkok', 'Center', 'Thailand', null);
+INSERT INTO `location`(locationId, city, region, country, sourceId) VALUES ('LC002', 'Changmai', 'North', 'Thailand', null);
 
-INSERT INTO `address`(addressId, number, street, alley, regionId, dormId) VALUES ('AD0001', '192/168', 'St.Road1', null, 'RG001', 'D0001');
-INSERT INTO `address`(addressId, number, street, alley, regionId, dormId) VALUES ('AD0002', '1/168', 'St.Road2', null, 'RG002', 'D0002');
+INSERT INTO `addrDetail`(zipCode, state, district, locationId) VALUES ('SD001', 'state1', 'district1', 'LC001');
+INSERT INTO `addrDetail`(zipCode, state, district, locationId) VALUES ('SD002', 'state2', 'district2', 'LC002');
+
+INSERT INTO `address`(addressId, number, street, alley, zipCode, dormId) VALUES ('AD0001', '192/168', 'St.Road1', null, 'SD001', 'D0001');
+INSERT INTO `address`(addressId, number, street, alley, zipCode, dormId) VALUES ('AD0002', '1/168', 'St.Road2', null, 'SD002', 'D0002');
 
 INSERT INTO `user`(email, password, fname, lname, sex, phone, role, addressId, agreementId) VALUES ('dorm1@mail.com', 'test', 'Dorm1', 'Lname1', 'Male', '1234567890', 'Dorm Manage', 'AD0001', null);
 INSERT INTO `user`(email, password, fname, lname, sex, phone, role, addressId, agreementId) VALUES ('dorm2@mail.com', 'test', 'Dorm2', 'Lname2', 'Female', '1234567899', 'Dorm Manage', 'AD0002', null);
