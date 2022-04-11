@@ -7,8 +7,8 @@ INSERT INTO `addrDetail`(zipCode, state, district, locationId) VALUES ('SD002', 
 INSERT INTO `address`(addressId, number, street, alley, zipCode) VALUES ('AD0001', '192/168', 'St.Road1', null, 'SD001');
 INSERT INTO `address`(addressId, number, street, alley, zipCode) VALUES ('AD0002', '1/168', 'St.Road2', null, 'SD002');
 
-INSERT INTO `dorm`(dormId, name, opentime, closeTime, description, rate, addressId) VALUES ('D0001', 'SUSURUN', null, null, null, 4.25, 'AD0001');
-INSERT INTO `dorm`(dormId, name, opentime, closeTime, description, rate, addressId) VALUES ('D0002', 'Neoarmstrong Canon', null, null, null, 5.00, 'AD0002');
+INSERT INTO `dorm`(dormId, name, opentime, closeTime, description, bookingTimeout, status, rate, addressId) VALUES ('D0001', 'SUSURUN', null, null, null, 3,'Verified', 4.25, 'AD0001');
+INSERT INTO `dorm`(dormId, name, opentime, closeTime, description, bookingTimeout, status, rate, addressId) VALUES ('D0002', 'Neoarmstrong Canon', null, null, null, 4,'Verified', 5.00, 'AD0002');
 
 INSERT INTO `roomType`(roomTypeId, type) VALUES ('RT001', 'Small');
 INSERT INTO `roomType`(roomTypeId, type) VALUES ('RT002', 'Big');

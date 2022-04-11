@@ -50,6 +50,8 @@ CREATE TABLE `dorm` (
     openTime		TIME,
     closeTime 		TIME,
     description 	VARCHAR(200),
+    bookingTimeout	INT					NOT NULL,
+    status			VARCHAR(20)			NOT NULL,
     rate			DECIMAL(3, 2)		NOT NULL,
     addressId		CHAR(6)				NOT NULL,
     CONSTRAINT dormId_pk PRIMARY KEY ( dormId ),
