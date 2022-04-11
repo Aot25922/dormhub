@@ -1,5 +1,14 @@
-INSERT INTO `dorm`(dormId, name, opentime, closeTime, description, rate) VALUES ('D0001', 'SUSURUN', null, null, null, 4.25);
-INSERT INTO `dorm`(dormId, name, opentime, closeTime, description, rate) VALUES ('D0002', 'Neoarmstrong Canon', null, null, null, 5.00);
+INSERT INTO `location`(locationId, city, region, country, img) VALUES ('LC001', 'Bangkok', 'Center', 'Thailand', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fbrandinside.asia%2Fbangkok-global-destination-city-of-the-world%2F&psig=AOvVaw3F1V2JO070BfwN9iR-LzZ0&ust=1649741940858000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCKC4iOili_cCFQAAAAAdAAAAABAD');
+INSERT INTO `location`(locationId, city, region, country, img) VALUES ('LC002', 'Changmai', 'North', 'Thailand', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fth.hotels.com%2Fgo%2Fthailand%2Fchiang-mai&psig=AOvVaw3xMi7P1mZxNxJk9uxTC_vL&ust=1649741963727000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCIDTrfGli_cCFQAAAAAdAAAAABAD');
+
+INSERT INTO `addrDetail`(zipCode, state, district, locationId) VALUES ('SD001', 'state1', 'district1', 'LC001');
+INSERT INTO `addrDetail`(zipCode, state, district, locationId) VALUES ('SD002', 'state2', 'district2', 'LC002');
+
+INSERT INTO `address`(addressId, number, street, alley, zipCode) VALUES ('AD0001', '192/168', 'St.Road1', null, 'SD001');
+INSERT INTO `address`(addressId, number, street, alley, zipCode) VALUES ('AD0002', '1/168', 'St.Road2', null, 'SD002');
+
+INSERT INTO `dorm`(dormId, name, opentime, closeTime, description, rate, addressId) VALUES ('D0001', 'SUSURUN', null, null, null, 4.25, 'AD0001');
+INSERT INTO `dorm`(dormId, name, opentime, closeTime, description, rate, addressId) VALUES ('D0002', 'Neoarmstrong Canon', null, null, null, 5.00, 'AD0002');
 
 INSERT INTO `roomType`(roomTypeId, type) VALUES ('RT001', 'Small');
 INSERT INTO `roomType`(roomTypeId, type) VALUES ('RT002', 'Big');
@@ -18,15 +27,6 @@ INSERT INTO `source`(sourceId, path, name, dormId, roomTypeId) VALUES ('S0007', 
 INSERT INTO `source`(sourceId, path, name, dormId, roomTypeId) VALUES ('S0008', 'https://cdnmetv.metv.com/z50xp-1619719725-16226-list_items-no.jpg', null, 'D0001', 'RT002');
 INSERT INTO `source`(sourceId, path, name, dormId, roomTypeId) VALUES ('S0009', 'https://cdnmetv.metv.com/AGKJm-1619719750-16227-list_items-bugs_gun.jpg', null, 'D0002', 'RT001');
 INSERT INTO `source`(sourceId, path, name, dormId, roomTypeId) VALUES ('S0010', 'https://cdnmetv.metv.com/Vpf7q-1619719679-16225-list_items-bugs-commy.jpg', null, 'D0002', 'RT001');
-
-INSERT INTO `location`(locationId, city, region, country, sourceId) VALUES ('LC001', 'Bangkok', 'Center', 'Thailand', null);
-INSERT INTO `location`(locationId, city, region, country, sourceId) VALUES ('LC002', 'Changmai', 'North', 'Thailand', null);
-
-INSERT INTO `addrDetail`(zipCode, state, district, locationId) VALUES ('SD001', 'state1', 'district1', 'LC001');
-INSERT INTO `addrDetail`(zipCode, state, district, locationId) VALUES ('SD002', 'state2', 'district2', 'LC002');
-
-INSERT INTO `address`(addressId, number, street, alley, zipCode, dormId) VALUES ('AD0001', '192/168', 'St.Road1', null, 'SD001', 'D0001');
-INSERT INTO `address`(addressId, number, street, alley, zipCode, dormId) VALUES ('AD0002', '1/168', 'St.Road2', null, 'SD002', 'D0002');
 
 INSERT INTO `user`(email, password, fname, lname, sex, phone, role, addressId, agreementId) VALUES ('dorm1@mail.com', 'test', 'Dorm1', 'Lname1', 'Male', '1234567890', 'Dorm Manage', 'AD0001', null);
 INSERT INTO `user`(email, password, fname, lname, sex, phone, role, addressId, agreementId) VALUES ('dorm2@mail.com', 'test', 'Dorm2', 'Lname2', 'Female', '1234567899', 'Dorm Manage', 'AD0002', null);
