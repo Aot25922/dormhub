@@ -4,10 +4,10 @@ USE int365_dormhub;
 DROP TABLE IF EXISTS `media`;
 DROP TABLE IF EXISTS `roomFacility`;
 DROP TABLE IF EXISTS `facility`;
+DROP TABLE IF EXISTS `booking`;
 DROP TABLE IF EXISTS `room`;
 DROP TABLE IF EXISTS `dormHasRoomType`;
 DROP TABLE IF EXISTS `roomType`;
-DROP TABLE IF EXISTS `booking`;
 DROP TABLE IF EXISTS `bankAccount`;
 DROP TABLE IF EXISTS `bank`;
 DROP TABLE IF EXISTS `dormHasOwner`;
@@ -116,24 +116,6 @@ CREATE TABLE `bankAccount` (
     CONSTRAINT bankId_fk FOREIGN KEY ( bankId ) REFERENCES `bank` ( bankId )
 );
 
-CREATE TABLE `booking` (
-	bookingId		VARCHAR(6)			NOT NULL,
-    fname			VARCHAR(50)			NOT NULL,
-    lname			VARCHAR(50)			NOT NULL,
-    phone			CHAR(10)			NOT NULL,
-	payDate			DATETIME			NOT NULL,
-    startDate		DATETIME			NOT NULL,
-    endDate			DATETIME			NOT NULL,
-    status			VARCHAR(10)			NOT NULL,
-    deposit			INT					NOT NULL,
-    description		VARCHAR(120),
-    userId			VARCHAR(5),
-    bankAccId		VARCHAR(5)			NOT NULL,
-    CONSTRAINT bookingId_pk PRIMARY KEY ( bookingId ),
-    CONSTRAINT userId_fk FOREIGN KEY ( userId ) REFERENCES `userAccount` ( userId ),
-    CONSTRAINT bankAccId_fk FOREIGN KEY ( bankAccId ) REFERENCES `bankAccount` ( bankAccId )
-);
-
 CREATE TABLE `roomType` (
 	roomTypeId		VARCHAR(5)			NOT NULL,
     type			VARCHAR(50)			NOT NULL,
@@ -159,11 +141,29 @@ CREATE TABLE `room` (
     description		VARCHAR(200),
     dormId			VARCHAR(5)			NOT NULL,
     roomTypeId		VARCHAR(5)			NOT NULL,
-    bookingId		VARCHAR(6),
     CONSTRAINT roomId_pk PRIMARY KEY ( roomId ),
     CONSTRAINT dormId_room_fk FOREIGN KEY ( dormId ) REFERENCES `dorm` ( dormId ),
-    CONSTRAINT roomTypeId_room_fk FOREIGN KEY ( roomTypeId ) REFERENCES `roomType` ( roomTypeId ),
-    CONSTRAINT bookingId_fk FOREIGN KEY ( bookingId ) REFERENCES `booking` ( bookingId )
+    CONSTRAINT roomTypeId_room_fk FOREIGN KEY ( roomTypeId ) REFERENCES `roomType` ( roomTypeId )
+);
+
+CREATE TABLE `booking` (
+	bookingId		VARCHAR(6)			NOT NULL,
+    fname			VARCHAR(50)			NOT NULL,
+    lname			VARCHAR(50)			NOT NULL,
+    phone			CHAR(10)			NOT NULL,
+	payDate			DATETIME			NOT NULL,
+    startDate		DATETIME			NOT NULL,
+    endDate			DATETIME			NOT NULL,
+    status			VARCHAR(10)			NOT NULL,
+    deposit			INT					NOT NULL,
+    description		VARCHAR(120),
+    userId			VARCHAR(5),
+    bankAccId		VARCHAR(5)			NOT NULL,
+    roomId			VARCHAR(5)			NOT NULL,
+    CONSTRAINT bookingId_pk PRIMARY KEY ( bookingId ),
+    CONSTRAINT userId_fk FOREIGN KEY ( userId ) REFERENCES `userAccount` ( userId ),
+    CONSTRAINT bankAccId_fk FOREIGN KEY ( bankAccId ) REFERENCES `bankAccount` ( bankAccId ),
+    CONSTRAINT roomId_fk FOREIGN KEY ( roomId ) REFERENCES `room` ( roomId )
 );
 
 CREATE TABLE `facility` (
