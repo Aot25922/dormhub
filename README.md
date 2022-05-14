@@ -1,6 +1,6 @@
 # dormhub
-Front-end       :   https://agreeable-desert-0b1a56600.1.azurestaticapps.net  
-Front-end (Dev) :   https://mango-dune-0ce502000.1.azurestaticapps.net  
-Back-end        :   https://dormhub.azurewebsites.net  
-Back-end (Dev)  :   https://dormhub-dev.azurewebsites.net  
-sql-server      :   bom2321.thddns.net (int365/9Q7@e4>+#p;+LHpYd_GU2Y$.a?\uhCg*)  
+Front-end       :   http://www.dormhub.works  
+Back-end        :   http://node.dormhub.works  
+Front-end (Dev) :   http://dev.dormhub.works  
+Back-end (Dev)  :   http://dev-node.dormhub.works  
+mysql           :   mysql.dormhub.works (int365/9Q7@e4>+#p;+LHpYd_GU2Y$.a?\uhCg*)  
