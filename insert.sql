@@ -12,9 +12,15 @@ INSERT INTO `province`(name, img, regionId) VALUES ('บุรีรัมย์
 
 INSERT INTO `district`(name, provinceId) VALUES ('state1', '1');
 INSERT INTO `district`(name, provinceId) VALUES ('state2', '2');
+INSERT INTO `district`(name, provinceId) VALUES ('state3', '3');
+INSERT INTO `district`(name, provinceId) VALUES ('state4', '4');
+INSERT INTO `district`(name, provinceId) VALUES ('state5', '5');
 
 INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict1', '1','10120');
 INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict2', '2','10130');
+INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict3', '3','10140');
+INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict4', '4','10150');
+INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict5', '5','10160');
 
 INSERT INTO `address`(number, street, alley, subDistrictId) VALUES ('192/168', 'St.Road1', null, '1');
 INSERT INTO `address`(number, street, alley, subDistrictId) VALUES ('1/168', 'St.Road2', null, '2');
