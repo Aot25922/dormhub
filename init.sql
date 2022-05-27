@@ -79,8 +79,8 @@ CREATE TABLE `userAccount` (
 CREATE TABLE `dorm` (
 	dormId			INT					NOT NULL AUTO_INCREMENT,
 	name			VARCHAR(50)			NOT NULL,
-    openTime		TIME,
-    closeTime 		TIME,
+    openTime		VARCHAR(10),
+    closeTime 		VARCHAR(10),
     description 	VARCHAR(200),
     rating			DECIMAL(3, 2)		NOT NULL,
     acceptPercent	DECIMAL(5, 2)		NOT NULL,
