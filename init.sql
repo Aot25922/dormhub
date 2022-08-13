@@ -2,8 +2,6 @@ DROP SCHEMA IF EXISTS `int365_dormhub` ;
 CREATE SCHEMA IF NOT EXISTS `int365_dormhub` DEFAULT CHARACTER SET utf8 ;
 USE int365_dormhub;
 DROP TABLE IF EXISTS `media`;
-DROP TABLE IF EXISTS `roomFacility`;
-DROP TABLE IF EXISTS `facility`;
 DROP TABLE IF EXISTS `booking`;
 DROP TABLE IF EXISTS `room`;
 DROP TABLE IF EXISTS `dormHasRoomType`;
@@ -60,6 +58,20 @@ CREATE TABLE `address` (
     CONSTRAINT addressId_pk PRIMARY KEY ( addressId ),
     CONSTRAINT subDistrictId_addr_fk FOREIGN KEY ( subDistrictId ) REFERENCES `subDistrict` ( subDistrictId )
 );
+
+
+-- CREATE TABLE `address` (
+-- 	addressId		INT					NOT NULL AUTO_INCREMENT,
+--     number			VARCHAR(20)			NOT NULL,
+--     street			VARCHAR(30)			NOT NULL,
+--     alley			VARCHAR(50),
+--     subDistrict		VARCHAR(50)			NOT NULL,
+--     district		VARCHAR(50)			NOT NULL,
+--     province		VARCHAR(50)			NOT NULL,
+--     region			VARCHAR(50)			NOT NULL,
+--     zipcode			CHAR(5)				NOT NULL,
+--     CONSTRAINT addressId_pk PRIMARY KEY ( addressId )
+-- );
 
 CREATE TABLE `userAccount` (
 	userId			INT					NOT NULL AUTO_INCREMENT,
@@ -120,6 +132,7 @@ CREATE TABLE `bankAccount` (
 CREATE TABLE `roomType` (
 	roomTypeId		INT					NOT NULL AUTO_INCREMENT,
     type			VARCHAR(50)			NOT NULL,
+    description		VARCHAR(200),
     CONSTRAINT roomTypeId_pk PRIMARY KEY ( roomTypeId )
 );
 
@@ -149,36 +162,18 @@ CREATE TABLE `room` (
 
 CREATE TABLE `booking` (
 	bookingId		INT					NOT NULL AUTO_INCREMENT,
-    fname			VARCHAR(50)			NOT NULL,
-    lname			VARCHAR(50)			NOT NULL,
-    phone			CHAR(10)			NOT NULL,
-	payDate			DATETIME			NOT NULL,
-    startDate		DATETIME			NOT NULL,
-    endDate			DATETIME			NOT NULL,
+	payDate			VARCHAR(50)			NOT NULL,
+    startDate		VARCHAR(50)			NOT NULL,
+    endDate			VARCHAR(50)			NOT NULL,
     status			VARCHAR(10)			NOT NULL,
-    deposit			INT					NOT NULL,
     description		VARCHAR(120),
-    userId			INT,
+    userId			INT					NOT NULL,
     bankAccId		INT					NOT NULL,
     roomId			INT					NOT NULL,
     CONSTRAINT bookingId_pk PRIMARY KEY ( bookingId ),
     CONSTRAINT userId_fk FOREIGN KEY ( userId ) REFERENCES `userAccount` ( userId ),
     CONSTRAINT bankAccId_fk FOREIGN KEY ( bankAccId ) REFERENCES `bankAccount` ( bankAccId ),
     CONSTRAINT roomId_fk FOREIGN KEY ( roomId ) REFERENCES `room` ( roomId )
-);
-
-CREATE TABLE `facility` (
-	facilityId		INT					NOT NULL AUTO_INCREMENT,
-    name			VARCHAR(50)			NOT NULL,
-    description		VARCHAR(200),
-    CONSTRAINT detailId_pk PRIMARY KEY ( facilityId )
-);
-
-CREATE TABLE `roomFacility` (
-	roomTypeId		INT					NOT NULL,
-    facilityId		INT					NOT NULL,
-    CONSTRAINT roomTypeId_fk FOREIGN KEY ( roomTypeId ) REFERENCES `roomType` ( roomTypeId ),
-    CONSTRAINT facilityId_fk FOREIGN KEY ( facilityId ) REFERENCES `facility` ( facilityId )
 );
 
 CREATE TABLE `media` (

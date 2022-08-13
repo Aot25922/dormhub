@@ -10,21 +10,40 @@ INSERT INTO `province`(name, img, regionId) VALUES ('ยะลา', 'https://www
 INSERT INTO `province`(name, img, regionId) VALUES ('ตาก', 'https://paimayang.com/wp-content/uploads/2020/07/%E0%B8%AD%E0%B8%B1%E0%B8%9E%E0%B9%80%E0%B8%94%E0%B8%97%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A2%E0%B8%A7%E0%B8%95%E0%B8%B2%E0%B8%81-840x560.jpg', '4');
 INSERT INTO `province`(name, img, regionId) VALUES ('บุรีรัมย์', 'https://images.squarespace-cdn.com/content/v1/58c0c62bd2b8574cf9ae84f9/1567429048413-VIBBT0PNKZR9TA99IIDZ/Banner_regis-%E0%B8%9A%E0%B8%B8%E0%B8%A3%E0%B8%B5%E0%B8%A3%E0%B8%B1%E0%B8%A1%E0%B8%A2%E0%B9%8C.jpg?format=1000w', '5');
 
-INSERT INTO `district`(name, provinceId) VALUES ('state1', '1');
-INSERT INTO `district`(name, provinceId) VALUES ('state2', '2');
-INSERT INTO `district`(name, provinceId) VALUES ('state3', '3');
-INSERT INTO `district`(name, provinceId) VALUES ('state4', '4');
-INSERT INTO `district`(name, provinceId) VALUES ('state5', '5');
+INSERT INTO `district`(name, provinceId) VALUES ('state1-1', '1');
+INSERT INTO `district`(name, provinceId) VALUES ('state1-2', '1');
+INSERT INTO `district`(name, provinceId) VALUES ('state1-3', '1');
+INSERT INTO `district`(name, provinceId) VALUES ('state2-1', '2');
+INSERT INTO `district`(name, provinceId) VALUES ('state2-2', '2');
+INSERT INTO `district`(name, provinceId) VALUES ('state2-3', '2');
+INSERT INTO `district`(name, provinceId) VALUES ('state3-1', '3');
+INSERT INTO `district`(name, provinceId) VALUES ('state3-2', '3');
+INSERT INTO `district`(name, provinceId) VALUES ('state3-3', '3');
+INSERT INTO `district`(name, provinceId) VALUES ('state4-1', '4');
+INSERT INTO `district`(name, provinceId) VALUES ('state4-2', '4');
+INSERT INTO `district`(name, provinceId) VALUES ('state4-3', '4');
+INSERT INTO `district`(name, provinceId) VALUES ('state5-1', '5');
+INSERT INTO `district`(name, provinceId) VALUES ('state5-2', '5');
+INSERT INTO `district`(name, provinceId) VALUES ('state5-3', '5');
 
-INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict1', '1','10120');
-INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict2', '2','10130');
-INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict3', '3','10140');
-INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict4', '4','10150');
-INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict5', '5','10160');
+INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict1-1', '1','10110');
+INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict1-2', '2','10120');
+INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict2-1', '3','10130');
+INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict2-2', '4','10140');
+INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict3-1', '5','10150');
+INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict3-2', '6','10160');
+INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict4-1', '7','10150');
+INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict4-2', '8','10170');
+INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict5-1', '9','10180');
+INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict5-2', '10','10190');
 
 INSERT INTO `address`(number, street, alley, subDistrictId) VALUES ('192/168', 'St.Road1', null, '1');
 INSERT INTO `address`(number, street, alley, subDistrictId) VALUES ('1/168', 'St.Road2', null, '2');
 INSERT INTO `address`(number, street, alley, subDistrictId) VALUES ('1/169', 'St.Road2', null, '2');
+
+-- INSERT INTO `address`(number, street, alley, subDistrict, district, province, region, zipcode) VALUES ('192/168', 'St.Road1', null, 'subDistrict-1', 'district-1', 'กรุงเทพ', 'ภาคกลาง', '10150');
+-- INSERT INTO `address`(number, street, alley, subDistrict, district, province, region, zipcode) VALUES ('1/168', 'St.Road2', null, 'subDistrict-2', 'district-2', 'เชียงใหม่', 'ภาคเหนือ', '10510');
+-- INSERT INTO `address`(number, street, alley, subDistrict, district, province, region, zipcode) VALUES ('1/169', 'St.Road2', null, 'subDistrict-3', 'district-3', 'ยะลา', 'ภาคใต้', '10450');
 
 INSERT INTO `userAccount`(email, password, fname, lname, sex, phone, role, addressId) VALUES ('dorm1@mail.com', 'test', 'Fname1', 'Lname1', 'Male', '1234567890', 'Dorm Manage', null);
 INSERT INTO `userAccount`(email, password, fname, lname, sex, phone, role, addressId) VALUES ('dorm2@mail.com', 'test', 'Fname2', 'Lname2', 'Female', '1234567899', 'Dorm Manage', null);
@@ -38,8 +57,8 @@ INSERT INTO `dormHasOwner`(dormId, ownerId) VALUES ('1', '1');
 INSERT INTO `dormHasOwner`(dormId, ownerId) VALUES ('2', '2');
 INSERT INTO `dormHasOwner`(dormId, ownerId) VALUES ('2', '3');
 
-INSERT INTO `roomType`(type) VALUES ('Small');
-INSERT INTO `roomType`(type) VALUES ('Big');
+INSERT INTO `roomType`(type, description) VALUES ('Small', 'เตียง โต๊ะ เก้าอี้');
+INSERT INTO `roomType`(type, description) VALUES ('Big', 'เตียง โต๊ะ เก้าอี้ บ้านของเรา');
 
 INSERT INTO `dormHasRoomType`(dormId, roomTypeId, price, area, deposit) VALUES ('1', '1', 2500, 50.25, 3000);
 INSERT INTO `dormHasRoomType`(dormId, roomTypeId, price, area, deposit) VALUES ('1', '2', 4000, 80.50, 5500);
@@ -49,15 +68,14 @@ INSERT INTO `room`(roomNum, status, floors, description, dormId, roomTypeId) VAL
 INSERT INTO `room`(roomNum, status, floors, description, dormId, roomTypeId) VALUES ('102', 'Idle', 1, null, '1', '2');
 INSERT INTO `room`(roomNum, status, floors, description, dormId, roomTypeId) VALUES ('101', 'Idle', 1, null, '2', '1');
 
-INSERT INTO `facility`(name, description) VALUES ('เตียงเล็ก', 'อันเท่านี่');
-INSERT INTO `facility`(name, description) VALUES ('เตียงเใหญ่', 'บะฮึ่มๆเลย');
-INSERT INTO `facility`(name, description) VALUES ('ตู้เสื้อผ้า', null);
-INSERT INTO `facility`(name, description) VALUES ('โทรทัศน์', '69นิ้ว');
+INSERT INTO `bank`(name, logo) VALUES ('กสิกร', '1');
+INSERT INTO `bank`(name, logo) VALUES ('กรุงไทย', '2');
+INSERT INTO `bank`(name, logo) VALUES ('ไทยพาณิชย์', '3');
 
-INSERT INTO `roomFacility`(roomTypeId, facilityId) VALUES ('1', '1');
-INSERT INTO `roomFacility`(roomTypeId, facilityId) VALUES ('1', '3');
-INSERT INTO `roomFacility`(roomTypeId, facilityId) VALUES ('2', '2');
-INSERT INTO `roomFacility`(roomTypeId, facilityId) VALUES ('2', '4');
+INSERT INTO `bankAccount`(accountNum, accountName, qrcode, dormId, bankId) VALUES ('1234567890', 'Dummy Name', null, 1, 1);
+INSERT INTO `bankAccount`(accountNum, accountName, qrcode, dormId, bankId) VALUES ('1234567891', 'Dummy Name', null, 1, 2);
+INSERT INTO `bankAccount`(accountNum, accountName, qrcode, dormId, bankId) VALUES ('1000000001', 'Name Maimee', null, 2, 2);
+INSERT INTO `bankAccount`(accountNum, accountName, qrcode, dormId, bankId) VALUES ('1000000002', 'Name Maimee', null, 2, 3);
 
 INSERT INTO `media`(path, name, dormId, roomTypeId) VALUES ('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/549e9b77-4c90-4c7f-8d0e-772a4ba70576/d9tyf2k-81e3e921-c712-4e0e-88b8-c3169a910d93.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzU0OWU5Yjc3LTRjOTAtNGM3Zi04ZDBlLTc3MmE0YmE3MDU3NlwvZDl0eWYyay04MWUzZTkyMS1jNzEyLTRlMGUtODhiOC1jMzE2OWE5MTBkOTMuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.l1dqqj8cs7o23NqsHxRygLJMalH5M3DCcazHyS_9V1k', null, '1', null);
 INSERT INTO `media`(path, name, dormId, roomTypeId) VALUES ('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/287eab66-0f73-4b97-8e74-849c5f06d542/ddrinx9-2e0cfe76-97c0-4008-8382-990d9f6f5af5.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI4N2VhYjY2LTBmNzMtNGI5Ny04ZTc0LTg0OWM1ZjA2ZDU0MlwvZGRyaW54OS0yZTBjZmU3Ni05N2MwLTQwMDgtODM4Mi05OTBkOWY2ZjVhZjUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.SEU1kEIhjs4yhvyIYj7XLMOgyk47lkrK65cbsTXcDMk', null, '2', null);
@@ -69,8 +87,3 @@ INSERT INTO `media`(path, name, dormId, roomTypeId) VALUES ('https://cdnmetv.met
 INSERT INTO `media`(path, name, dormId, roomTypeId) VALUES ('https://cdnmetv.metv.com/z50xp-1619719725-16226-list_items-no.jpg', null, '1', '2');
 INSERT INTO `media`(path, name, dormId, roomTypeId) VALUES ('https://cdnmetv.metv.com/AGKJm-1619719750-16227-list_items-bugs_gun.jpg', null, '2', '1');
 INSERT INTO `media`(path, name, dormId, roomTypeId) VALUES ('https://cdnmetv.metv.com/Vpf7q-1619719679-16225-list_items-bugs-commy.jpg', null, '2', '1');
-
--- SELECT * FROM int365_dormhub.address;
--- SELECT * FROM int365_dormhub.region;
--- SELECT * FROM int365_dormhub.user;
--- SELECT * FROM int365_dormhub.dorm;
