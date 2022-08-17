@@ -1,5 +1,5 @@
-DROP SCHEMA IF EXISTS `int365_dormhub` ;
-CREATE SCHEMA IF NOT EXISTS `int365_dormhub` DEFAULT CHARACTER SET utf8 ;
+-- DROP SCHEMA IF EXISTS `int365_dormhub` ;
+-- CREATE SCHEMA IF NOT EXISTS `int365_dormhub` DEFAULT CHARACTER SET utf8 ;
 USE int365_dormhub;
 DROP TABLE IF EXISTS `media`;
 DROP TABLE IF EXISTS `booking`;
@@ -8,45 +8,49 @@ DROP TABLE IF EXISTS `dormHasRoomType`;
 DROP TABLE IF EXISTS `roomType`;
 DROP TABLE IF EXISTS `bankAccount`;
 DROP TABLE IF EXISTS `bank`;
-DROP TABLE IF EXISTS `dormHasOwner`;
 DROP TABLE IF EXISTS `dorm`;
 DROP TABLE IF EXISTS `userAccount`;
 DROP TABLE IF EXISTS `address`;
-DROP TABLE IF EXISTS `subDistrict`;
-DROP TABLE IF EXISTS `district`;
-DROP TABLE IF EXISTS `province`;
-DROP TABLE IF EXISTS `region`;
+DROP TABLE IF EXISTS `subDistricts`;
+DROP TABLE IF EXISTS `districts`;
+DROP TABLE IF EXISTS `provinces`;
+DROP TABLE IF EXISTS `geographies`;
 
-CREATE TABLE `region` (
-	regionId		INT					NOT NULL AUTO_INCREMENT,
-    name			VARCHAR(50)			NOT NULL,
-    CONSTRAINT regionId_pk PRIMARY KEY ( regionId )
+CREATE TABLE IF NOT EXISTS `geographies` (
+	id 			INT 			NOT NULL AUTO_INCREMENT,
+	name 		VARCHAR(255) 	NOT NULL,
+   CONSTRAINT geographies_id_pk PRIMARY KEY ( id )
 );
 
-CREATE TABLE `province` (
-    provinceId		INT					NOT NULL AUTO_INCREMENT,
-    name			VARCHAR(50)			NOT NULL,
-    img				VARCHAR(1000)		NOT NULL,
-    regionId		INT					NOT NULL,
-    CONSTRAINT provinceId_pk PRIMARY KEY ( provinceId ),
-    CONSTRAINT regionId_fk FOREIGN KEY ( regionId ) REFERENCES `region` ( regionId )
+CREATE TABLE IF NOT EXISTS `provinces` (
+	id 				INT 			NOT NULL AUTO_INCREMENT,
+	code 			INT 			NOT NULL,
+	name_th 		VARCHAR(150) 	NOT NULL,
+	name_en 		VARCHAR(150) 	NOT NULL,
+	img				VARCHAR(1000), 
+	geography_id 	INT 			NOT NULL,
+  CONSTRAINT provinces_id_pk PRIMARY KEY ( id ),
+  CONSTRAINT geography_id_fk FOREIGN KEY ( geography_id ) REFERENCES `geographies` ( id )
 );
 
-CREATE TABLE `district` (
-    districtId		INT					NOT NULL AUTO_INCREMENT,
-    name			VARCHAR(50)			NOT NULL,
-    provinceId		INT					NOT NULL,
-    CONSTRAINT districtId_pk PRIMARY KEY ( districtId ),
-    CONSTRAINT provinceId_fk FOREIGN KEY ( provinceId ) REFERENCES `province` ( provinceId )
+CREATE TABLE IF NOT EXISTS `districts` (
+	id 				INT 			NOT NULL AUTO_INCREMENT,
+	code 			INT				NOT NULL,
+	name_th 		VARCHAR(150)	NOT NULL,
+	name_en 		VARCHAR(150)	NOT NULL,
+	province_id	 	INT				NOT NULL,
+  CONSTRAINT districts_id_pk PRIMARY KEY ( id ),
+  CONSTRAINT province_id_fk FOREIGN KEY ( province_id ) REFERENCES `provinces` ( id )
 );
 
-CREATE TABLE `subDistrict` (
-    subDistrictId	INT					NOT NULL AUTO_INCREMENT,
-    name			VARCHAR(50)			NOT NULL,
-	zipCodeId		CHAR(5)				NOT NULL,
-    districtId		INT					NOT NULL,
-    CONSTRAINT subDistrictId_pk PRIMARY KEY ( subDistrictId ),
-    CONSTRAINT districtId_fk FOREIGN KEY ( districtId ) REFERENCES `district` ( districtId )
+CREATE TABLE IF NOT EXISTS `subDistricts` (
+	id 				INT				NOT NULL AUTO_INCREMENT,
+	zip_code 		INT 			NOT NULL,
+	name_th 		VARCHAR(150)	NOT NULL,
+	name_en 		VARCHAR(150)	NOT NULL,
+	districts_id 	INT 			NOT NULL,
+  CONSTRAINT subDistricts_id_pk PRIMARY KEY ( id ),
+  CONSTRAINT districts_id_fk FOREIGN KEY ( districts_id ) REFERENCES `districts` ( id )
 );
 
 CREATE TABLE `address` (
@@ -56,7 +60,7 @@ CREATE TABLE `address` (
     alley			VARCHAR(50),
     subDistrictId	INT					NOT NULL,
     CONSTRAINT addressId_pk PRIMARY KEY ( addressId ),
-    CONSTRAINT subDistrictId_addr_fk FOREIGN KEY ( subDistrictId ) REFERENCES `subDistrict` ( subDistrictId )
+    CONSTRAINT subDistrictId_addr_fk FOREIGN KEY ( subDistrictId ) REFERENCES `subDistricts` ( id )
 );
 
 
@@ -82,10 +86,8 @@ CREATE TABLE `userAccount` (
     sex				VARCHAR(20)			NOT NULL,
     phone			CHAR(10)			NOT NULL,
     role			VARCHAR(20)			NOT NULL,
-    addressId		INT,
     CONSTRAINT userId_pk PRIMARY KEY ( userId ),
-    CONSTRAINT contact_uc UNIQUE (phone, email),
-    CONSTRAINT addressId_user_fk FOREIGN KEY ( addressId ) REFERENCES `address` ( addressId )
+    CONSTRAINT contact_uc UNIQUE (phone, email)
 );
 
 CREATE TABLE `dorm` (
@@ -99,14 +101,9 @@ CREATE TABLE `dorm` (
     elecPerUnit		DECIMAL(3, 2)		NOT NULL,
     waterPerUnit	DECIMAL(3, 2)		NOT NULL,
     addressId		INT					NOT NULL,
+    ownerId			INT					NOT NULL,
     CONSTRAINT dorm_pk PRIMARY KEY ( dormId, addressId ),
-	CONSTRAINT addressId_dorm_fk FOREIGN KEY ( addressId ) REFERENCES `address` ( addressId )
-);
-
-CREATE TABLE `dormHasOwner` (
-	dormId			INT					NOT NULL,
-    ownerId			INT					NOT NULl,
-    CONSTRAINT dormId_owner_fk FOREIGN KEY ( dormId ) REFERENCES `dorm` ( dormId ),
+	CONSTRAINT addressId_dorm_fk FOREIGN KEY ( addressId ) REFERENCES `address` ( addressId ),
     CONSTRAINT ownerId_fk FOREIGN KEY ( ownerId ) REFERENCES `userAccount` ( userId )
 );
 

@@ -1,61 +1,18 @@
-INSERT INTO `region`(name) VALUES ('ภาคกลาง');
-INSERT INTO `region`(name) VALUES ('ภาคเหนือ');
-INSERT INTO `region`(name) VALUES ('ภาคใต้');
-INSERT INTO `region`(name) VALUES ('ภาคตะวันตก');
-INSERT INTO `region`(name) VALUES ('ภาคตะวันออกฉียงเหนือ');
-
-INSERT INTO `province`(name, img, regionId) VALUES ('กรุงเทพ', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fbrandinside.asia%2Fbangkok-global-destination-city-of-the-world%2F&psig=AOvVaw3F1V2JO070BfwN9iR-LzZ0&ust=1649741940858000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCKC4iOili_cCFQAAAAAdAAAAABAD', '1');
-INSERT INTO `province`(name, img, regionId) VALUES ('เชียงใหม่', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fth.hotels.com%2Fgo%2Fthailand%2Fchiang-mai&psig=AOvVaw3xMi7P1mZxNxJk9uxTC_vL&ust=1649741963727000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCIDTrfGli_cCFQAAAAAdAAAAABAD', '2');
-INSERT INTO `province`(name, img, regionId) VALUES ('ยะลา', 'https://www.southdeepoutlook.com/editorial_thumbnail/5c128f0a26cbf52474a7c3a24383c093_image_650x415.jpg', '3');
-INSERT INTO `province`(name, img, regionId) VALUES ('ตาก', 'https://paimayang.com/wp-content/uploads/2020/07/%E0%B8%AD%E0%B8%B1%E0%B8%9E%E0%B9%80%E0%B8%94%E0%B8%97%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A2%E0%B8%A7%E0%B8%95%E0%B8%B2%E0%B8%81-840x560.jpg', '4');
-INSERT INTO `province`(name, img, regionId) VALUES ('บุรีรัมย์', 'https://images.squarespace-cdn.com/content/v1/58c0c62bd2b8574cf9ae84f9/1567429048413-VIBBT0PNKZR9TA99IIDZ/Banner_regis-%E0%B8%9A%E0%B8%B8%E0%B8%A3%E0%B8%B5%E0%B8%A3%E0%B8%B1%E0%B8%A1%E0%B8%A2%E0%B9%8C.jpg?format=1000w', '5');
-
-INSERT INTO `district`(name, provinceId) VALUES ('state1-1', '1');
-INSERT INTO `district`(name, provinceId) VALUES ('state1-2', '1');
-INSERT INTO `district`(name, provinceId) VALUES ('state1-3', '1');
-INSERT INTO `district`(name, provinceId) VALUES ('state2-1', '2');
-INSERT INTO `district`(name, provinceId) VALUES ('state2-2', '2');
-INSERT INTO `district`(name, provinceId) VALUES ('state2-3', '2');
-INSERT INTO `district`(name, provinceId) VALUES ('state3-1', '3');
-INSERT INTO `district`(name, provinceId) VALUES ('state3-2', '3');
-INSERT INTO `district`(name, provinceId) VALUES ('state3-3', '3');
-INSERT INTO `district`(name, provinceId) VALUES ('state4-1', '4');
-INSERT INTO `district`(name, provinceId) VALUES ('state4-2', '4');
-INSERT INTO `district`(name, provinceId) VALUES ('state4-3', '4');
-INSERT INTO `district`(name, provinceId) VALUES ('state5-1', '5');
-INSERT INTO `district`(name, provinceId) VALUES ('state5-2', '5');
-INSERT INTO `district`(name, provinceId) VALUES ('state5-3', '5');
-
-INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict1-1', '1','10110');
-INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict1-2', '2','10120');
-INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict2-1', '3','10130');
-INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict2-2', '4','10140');
-INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict3-1', '5','10150');
-INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict3-2', '6','10160');
-INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict4-1', '7','10150');
-INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict4-2', '8','10170');
-INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict5-1', '9','10180');
-INSERT INTO `subDistrict`(name, districtId, zipCodeId) VALUES ('subDistrict5-2', '10','10190');
-
-INSERT INTO `address`(number, street, alley, subDistrictId) VALUES ('192/168', 'St.Road1', null, '1');
-INSERT INTO `address`(number, street, alley, subDistrictId) VALUES ('1/168', 'St.Road2', null, '2');
-INSERT INTO `address`(number, street, alley, subDistrictId) VALUES ('1/169', 'St.Road2', null, '2');
+INSERT INTO `address`(number, street, alley, subDistrictId) VALUES ('192/168', 'St.Road1', null, '100101');
+INSERT INTO `address`(number, street, alley, subDistrictId) VALUES ('1/168', 'St.Road2', null, '100102');
+INSERT INTO `address`(number, street, alley, subDistrictId) VALUES ('1/169', 'St.Road2', null, '100102');
 
 -- INSERT INTO `address`(number, street, alley, subDistrict, district, province, region, zipcode) VALUES ('192/168', 'St.Road1', null, 'subDistrict-1', 'district-1', 'กรุงเทพ', 'ภาคกลาง', '10150');
 -- INSERT INTO `address`(number, street, alley, subDistrict, district, province, region, zipcode) VALUES ('1/168', 'St.Road2', null, 'subDistrict-2', 'district-2', 'เชียงใหม่', 'ภาคเหนือ', '10510');
 -- INSERT INTO `address`(number, street, alley, subDistrict, district, province, region, zipcode) VALUES ('1/169', 'St.Road2', null, 'subDistrict-3', 'district-3', 'ยะลา', 'ภาคใต้', '10450');
 
-INSERT INTO `userAccount`(email, password, fname, lname, sex, phone, role, addressId) VALUES ('dorm1@mail.com', 'test', 'Fname1', 'Lname1', 'Male', '1234567890', 'Dorm Manage', null);
-INSERT INTO `userAccount`(email, password, fname, lname, sex, phone, role, addressId) VALUES ('dorm2@mail.com', 'test', 'Fname2', 'Lname2', 'Female', '1234567899', 'Dorm Manage', null);
-INSERT INTO `userAccount`(email, password, fname, lname, sex, phone, role, addressId) VALUES ('dorm3@mail.com', 'test', 'Fname3', 'Lname3', 'Male', '1234567999', 'Dorm Manage', null);
-INSERT INTO `userAccount`(email, password, fname, lname, sex, phone, role, addressId) VALUES ('dorm4@mail.com', 'test', 'Fname4', 'Lname4', 'Female', '1234567879', 'User', '3');
+INSERT INTO `userAccount`(email, password, fname, lname, sex, phone, role) VALUES ('dorm1@mail.com', 'test', 'Fname1', 'Lname1', 'Male', '1234567890', 'Owner');
+INSERT INTO `userAccount`(email, password, fname, lname, sex, phone, role) VALUES ('dorm2@mail.com', 'test', 'Fname2', 'Lname2', 'Female', '1234567899', 'Owner');
+INSERT INTO `userAccount`(email, password, fname, lname, sex, phone, role) VALUES ('dorm3@mail.com', 'test', 'Fname3', 'Lname3', 'Male', '1234567999', 'Owner');
+INSERT INTO `userAccount`(email, password, fname, lname, sex, phone, role) VALUES ('dorm4@mail.com', 'test', 'Fname4', 'Lname4', 'Female', '1234567879', 'Customer');
 
-INSERT INTO `dorm`(name, opentime, closeTime, description, rating, acceptPercent, elecPerUnit, waterPerUnit, addressId) VALUES ('SUSURUN', null, null, null, 3.25, 90.00, 3.25, 1.23,'1');
-INSERT INTO `dorm`(name, opentime, closeTime, description, rating, acceptPercent, elecPerUnit, waterPerUnit, addressId) VALUES ('Neoarmstrong Canon', null, null, null, 4.33, 72.26, 4.00, 2.01, '2');
-
-INSERT INTO `dormHasOwner`(dormId, ownerId) VALUES ('1', '1');
-INSERT INTO `dormHasOwner`(dormId, ownerId) VALUES ('2', '2');
-INSERT INTO `dormHasOwner`(dormId, ownerId) VALUES ('2', '3');
+INSERT INTO `dorm`(name, opentime, closeTime, description, rating, acceptPercent, elecPerUnit, waterPerUnit, addressId, ownerId) VALUES ('SUSURUN', null, null, null, 3.25, 90.00, 3.25, 1.23, 2, 1);
+INSERT INTO `dorm`(name, opentime, closeTime, description, rating, acceptPercent, elecPerUnit, waterPerUnit, addressId, ownerId) VALUES ('Neoarmstrong Canon', null, null, null, 4.33, 72.26, 4.00, 2.01, 3, 2);
 
 INSERT INTO `roomType`(type, description) VALUES ('Small', 'เตียง โต๊ะ เก้าอี้');
 INSERT INTO `roomType`(type, description) VALUES ('Big', 'เตียง โต๊ะ เก้าอี้ บ้านของเรา');
