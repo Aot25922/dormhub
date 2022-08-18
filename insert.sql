@@ -1,6 +1,8 @@
-INSERT INTO `address`(number, street, alley, subDistrictId) VALUES ('192/168', 'St.Road1', null, '100101');
-INSERT INTO `address`(number, street, alley, subDistrictId) VALUES ('1/168', 'St.Road2', null, '100102');
-INSERT INTO `address`(number, street, alley, subDistrictId) VALUES ('1/169', 'St.Road2', null, '100102');
+START TRANSACTION;
+
+INSERT INTO `address`(number, street, alley, subDistrict_id) VALUES ('192/168', 'St.Road1', null, '100101');
+INSERT INTO `address`(number, street, alley, subDistrict_id) VALUES ('1/168', 'St.Road2', null, '100102');
+INSERT INTO `address`(number, street, alley, subDistrict_id) VALUES ('1/169', 'St.Road2', null, '100102');
 
 -- INSERT INTO `address`(number, street, alley, subDistrict, district, province, region, zipcode) VALUES ('192/168', 'St.Road1', null, 'subDistrict-1', 'district-1', 'กรุงเทพ', 'ภาคกลาง', '10150');
 -- INSERT INTO `address`(number, street, alley, subDistrict, district, province, region, zipcode) VALUES ('1/168', 'St.Road2', null, 'subDistrict-2', 'district-2', 'เชียงใหม่', 'ภาคเหนือ', '10510');
@@ -44,3 +46,5 @@ INSERT INTO `media`(path, name, dormId, roomTypeId) VALUES ('https://cdnmetv.met
 INSERT INTO `media`(path, name, dormId, roomTypeId) VALUES ('https://cdnmetv.metv.com/z50xp-1619719725-16226-list_items-no.jpg', null, '1', '2');
 INSERT INTO `media`(path, name, dormId, roomTypeId) VALUES ('https://cdnmetv.metv.com/AGKJm-1619719750-16227-list_items-bugs_gun.jpg', null, '2', '1');
 INSERT INTO `media`(path, name, dormId, roomTypeId) VALUES ('https://cdnmetv.metv.com/Vpf7q-1619719679-16225-list_items-bugs-commy.jpg', null, '2', '1');
+
+COMMIT;

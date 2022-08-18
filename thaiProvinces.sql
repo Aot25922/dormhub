@@ -1,3 +1,5 @@
+START TRANSACTION;
+
 INSERT INTO `geographies` (`id`, `name`) VALUES
 (1, 'ภาคเหนือ'),
 (2, 'ภาคกลาง'),
@@ -9934,3 +9936,5 @@ INSERT INTO `subDistricts` (`id`, `zip_code`, `name_th`, `name_en`, `districts_i
 ('380801', 38000, 'โคกกว้าง', 'Khok Kwang', 1006),
 ('380802', 38000, 'บุ่งคล้า', 'Bung Khla', 1006),
 ('380803', 38000, 'หนองเดิน', 'Nong Doen', 1006);
+
+COMMIT;

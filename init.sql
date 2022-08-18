@@ -1,5 +1,7 @@
 -- DROP SCHEMA IF EXISTS `int365_dormhub` ;
 -- CREATE SCHEMA IF NOT EXISTS `int365_dormhub` DEFAULT CHARACTER SET utf8 ;
+START TRANSACTION;
+
 USE int365_dormhub;
 DROP TABLE IF EXISTS `media`;
 DROP TABLE IF EXISTS `booking`;
@@ -54,13 +56,13 @@ CREATE TABLE IF NOT EXISTS `subDistricts` (
 );
 
 CREATE TABLE `address` (
-	addressId		INT					NOT NULL AUTO_INCREMENT,
+	id				INT					NOT NULL AUTO_INCREMENT,
     number			VARCHAR(20)			NOT NULL,
     street			VARCHAR(30)			NOT NULL,
     alley			VARCHAR(50),
-    subDistrictId	INT					NOT NULL,
-    CONSTRAINT addressId_pk PRIMARY KEY ( addressId ),
-    CONSTRAINT subDistrictId_addr_fk FOREIGN KEY ( subDistrictId ) REFERENCES `subDistricts` ( id )
+    subDistrict_id	INT					NOT NULL,
+    CONSTRAINT address_id_pk PRIMARY KEY ( id ),
+    CONSTRAINT subDistrict_id_fk FOREIGN KEY ( subDistrict_id ) REFERENCES `subDistricts` ( id )
 );
 
 
@@ -103,7 +105,7 @@ CREATE TABLE `dorm` (
     addressId		INT					NOT NULL,
     ownerId			INT					NOT NULL,
     CONSTRAINT dorm_pk PRIMARY KEY ( dormId, addressId ),
-	CONSTRAINT addressId_dorm_fk FOREIGN KEY ( addressId ) REFERENCES `address` ( addressId ),
+	CONSTRAINT addressId_dorm_fk FOREIGN KEY ( addressId ) REFERENCES `address` ( id ),
     CONSTRAINT ownerId_fk FOREIGN KEY ( ownerId ) REFERENCES `userAccount` ( userId )
 );
 
@@ -183,3 +185,5 @@ CREATE TABLE `media` (
     CONSTRAINT dormId_md_fk FOREIGN KEY ( dormId ) REFERENCES `dorm` ( dormId ),
     CONSTRAINT roomTypeId_md_fk FOREIGN KEY ( roomTypeId ) REFERENCES `roomType` ( roomTypeId )
 );
+
+COMMIT;
