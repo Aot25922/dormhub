@@ -12,7 +12,8 @@ DROP TABLE IF EXISTS `bankAccount`;
 DROP TABLE IF EXISTS `bank`;
 DROP TABLE IF EXISTS `dorm`;
 DROP TABLE IF EXISTS `userAccount`;
-DROP TABLE IF EXISTS `address`;
+
+-- For users to input address 
 DROP TABLE IF EXISTS `subDistricts`;
 DROP TABLE IF EXISTS `districts`;
 DROP TABLE IF EXISTS `provinces`;
@@ -55,30 +56,6 @@ CREATE TABLE IF NOT EXISTS `subDistricts` (
   CONSTRAINT districts_id_fk FOREIGN KEY ( districts_id ) REFERENCES `districts` ( id )
 );
 
-CREATE TABLE `address` (
-	id				INT					NOT NULL AUTO_INCREMENT,
-    number			VARCHAR(20)			NOT NULL,
-    street			VARCHAR(30)			NOT NULL,
-    alley			VARCHAR(50),
-    subDistrict_id	INT					NOT NULL,
-    CONSTRAINT address_id_pk PRIMARY KEY ( id ),
-    CONSTRAINT subDistrict_id_fk FOREIGN KEY ( subDistrict_id ) REFERENCES `subDistricts` ( id )
-);
-
-
--- CREATE TABLE `address` (
--- 	addressId		INT					NOT NULL AUTO_INCREMENT,
---     number			VARCHAR(20)			NOT NULL,
---     street			VARCHAR(30)			NOT NULL,
---     alley			VARCHAR(50),
---     subDistrict		VARCHAR(50)			NOT NULL,
---     district		VARCHAR(50)			NOT NULL,
---     province		VARCHAR(50)			NOT NULL,
---     region			VARCHAR(50)			NOT NULL,
---     zipcode			CHAR(5)				NOT NULL,
---     CONSTRAINT addressId_pk PRIMARY KEY ( addressId )
--- );
-
 CREATE TABLE `userAccount` (
 	userId			INT					NOT NULL AUTO_INCREMENT,
 	email			VARCHAR(50)			NOT NULL,
@@ -98,14 +75,11 @@ CREATE TABLE `dorm` (
     openTime		VARCHAR(10),
     closeTime 		VARCHAR(10),
     description 	VARCHAR(200),
-    rating			DECIMAL(3, 2)		NOT NULL,
-    acceptPercent	DECIMAL(5, 2)		NOT NULL,
-    elecPerUnit		DECIMAL(3, 2)		NOT NULL,
-    waterPerUnit	DECIMAL(3, 2)		NOT NULL,
-    addressId		INT					NOT NULL,
+    elecPerUnit		DECIMAL(4, 2)		NOT NULL,
+    waterPerUnit	DECIMAL(4, 2)		NOT NULL,
+    address			VARCHAR(200)		NOT NULL,
     ownerId			INT					NOT NULL,
-    CONSTRAINT dorm_pk PRIMARY KEY ( dormId, addressId ),
-	CONSTRAINT addressId_dorm_fk FOREIGN KEY ( addressId ) REFERENCES `address` ( id ),
+    CONSTRAINT dorm_pk PRIMARY KEY ( dormId ),
     CONSTRAINT ownerId_fk FOREIGN KEY ( ownerId ) REFERENCES `userAccount` ( userId )
 );
 
