@@ -74,7 +74,7 @@ CREATE TABLE `dorm` (
 	name			VARCHAR(50)			NOT NULL,
     openTime		VARCHAR(10),
     closeTime 		VARCHAR(10),
-    description 	VARCHAR(200),
+    description 	VARCHAR(1000),
     elecPerUnit		DECIMAL(4, 2)		NOT NULL,
     waterPerUnit	DECIMAL(4, 2)		NOT NULL,
     address			VARCHAR(200)		NOT NULL,
