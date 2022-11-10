@@ -105,7 +105,7 @@ CREATE TABLE `bankAccount` (
 CREATE TABLE `roomType` (
 	roomTypeId		INT					NOT NULL AUTO_INCREMENT,
     type			VARCHAR(50)			NOT NULL,
-    description		VARCHAR(200),
+    description		VARCHAR(1000),
     CONSTRAINT roomTypeId_pk PRIMARY KEY ( roomTypeId )
 );
 
